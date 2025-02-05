@@ -33,28 +33,24 @@
 	</div>
 	
 	<script>
-		function validateTemperatureInput(temp) {
-			if (isNaN(temp)) {
+		function validateTemperatureInput(t) {
+			if (isNaN(t)) {
 				alert("Please verify whether the temperature value is correct!!!");
 				return false;
 			}
 			
-			if (!(temp >= -100 && temp <= 100)) {
+			if (!(t >= -100 && t <= 100)) {
 				alert("Temperature entered (in Celsius) must be between -100 and 100 C'");
 				return false;
 			}
 			
 			return true;
 		}
-		
 
-	    $(document).ready(function(){
-			$("button").click(function(){
-			   var t = $('#temp').val();//celsius
-			   var u = $('#unit').val();
-			   
-			   
-			   
+		function convertTemperature(u,t){
+
+		//$(document).ready(function(){
+
 			   var t1;
 			   var u1;
 			   
@@ -63,15 +59,27 @@
 					u1 = "Fahrenheit";
 			   }else if(u == "K"){
 					t1 =  t + 273.15;
-					u1 = "Réaumur";
+					u1 = "Kelvin";
 			   }else if(u == "R"){
 					t1 = t * (4/5);
-					u1 = "Kelvin";
+					u1 = "Réaumur";
 			   }
-			   
+			   return (u1,t1);
+			}
+
+			   $("button").click(function(){
+				var t = $('#temp').val();//celsius
+				var u = $('#unit').val();
+
+				var chk = validateTemperatureInput(t);
+				if (chk != null) return chk;
+				var cvs =  convertTemperature(u,t);
+
 			   alert("Temperature is "+t1+" in "+u1);
+
 			});
-		});
+
+
 	</script>
 </body>
 </html>
