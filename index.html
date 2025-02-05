@@ -36,15 +36,14 @@
 		function validateTemperatureInput(t) {
 			if (isNaN(t)) {
 				alert("Please verify whether the temperature value is correct!!!");
-				return false;
+				return;
 			}
 			
 			if (!(t >= -100 && t <= 100)) {
 				alert("Temperature entered (in Celsius) must be between -100 and 100 C'");
-				return false;
+				return;
 			}
-			
-			return true;
+	
 		}
 
 		function convertTemperature(u,t){
@@ -75,7 +74,8 @@
 				if (chk != null) return chk;
 				var cvs =  convertTemperature(u,t);
 
-			   alert("Temperature is "+t1+" in "+u1);
+			   //alert("Temperature is "+t1+" in "+u1);
+			   document.getElementById("result").innerHTML = ("Temperature is "+cvs.t1+" in "+cvs.u1);
 
 			});
 
